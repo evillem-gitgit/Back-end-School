@@ -7,14 +7,14 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Aluno {
+model Student {
   id    Int    @id @default(autoincrement())
   nome  String
   email String @unique
   idade Int?
 }
 
-model Professor {
+model Teacher {
   id    Int    @id @default(autoincrement())
   nome  String
   email String @unique

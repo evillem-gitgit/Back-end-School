@@ -1,4 +1,4 @@
-CREATE TABLE "Aluno" (
+CREATE TABLE "Student" (
     "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
     "nome" TEXT NOT NULL,
     "email" TEXT NOT NULL UNIQUE,
@@ -6,7 +6,7 @@ CREATE TABLE "Aluno" (
 );
 
 
-CREATE TABLE "Professor" (
+CREATE TABLE "Teacher" (
     "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
     "nome" TEXT NOT NULL,
     "email" TEXT NOT NULL UNIQUE,
