@@ -11,10 +11,12 @@ model Aluno {
   id    Int    @id @default(autoincrement())
   nome  String
   email String @unique
+  idade Int?
 }
 
 model Professor {
   id    Int    @id @default(autoincrement())
   nome  String
-  materia String
+  email String @unique
+  idade Int?
 }
