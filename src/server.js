@@ -1,15 +1,21 @@
-import express from "express";
-import alunoRoutes from "./routes/alunoRoutes.js";
-import professorRoutes from "./routes/professorRoutes.js";
-
+const express = require("express");
 const app = express();
+const PORT = 5432;
+
+app.use(express.urlencoded({ extended: true}));
 app.use(express.json());
 
-// rotas
-app.use("/alunos", alunoRoutes);
-app.use("/professores", professorRoutes);
+app.get('/', (req, res) => {
+    res.send("Servidor está rodando ok!")
+})
 
-const PORT = process.env.PORT || 3000;
+const studentsRoutes = require('./routes/studentRoutes.js');
+const teacherRoutes = require('./routes/teacherRoutes.js');
+
+app.use('/studentRoutes', studentsRoutes);
+app.use('/teacherRoutes', teacherRoutes);
+
 app.listen(PORT, () => {
-  console.log(`Servidor rodando na porta ${PORT}`);
-});
+    console.log(`Servidor rodando em https://localhost:${PORT}`)
+})
+

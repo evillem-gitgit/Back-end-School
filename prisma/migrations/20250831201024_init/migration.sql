@@ -12,5 +12,3 @@ CREATE TABLE "Professor" (
     "materia" TEXT NOT NULL
 );
 
--- CreateIndex
-CREATE UNIQUE INDEX "Aluno_email_key" ON "Aluno"("email");
