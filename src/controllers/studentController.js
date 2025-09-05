@@ -1,12 +1,12 @@
 const { PrismaClient } = require("@prisma/client");
 const prismas = new PrismaClient();
 
-async function GET(req, res) {
+async function List(req, res) {
     const studantes = await prismas.Studant.findMany();
-    res.json(Studant);
+    res.json(studantes);
 }
 
-async function SET(req, res) {
+async function Create(req, res) {
     const { id, nome, email, idade} = req.body;
 
     try{
@@ -26,7 +26,7 @@ async function SET(req, res) {
     }
 }
 
-async function UPDATE(req, res) {
+async function Update(req, res) {
     const id = parseInt(req.params.id);
     const { nome, email} = req.body;
 
@@ -35,13 +35,13 @@ async function UPDATE(req, res) {
             where: { id },
             data: { ...(nome && {nome}), ...(email && { email }) }
         });
-        res.json(updateStudant);
+        res.json(updateStudants);
     } catch (err) {
         res.status(404).json({ erro: 'Aluno não encontrado'});
     }
 }
 
-async function DELETE(res, req){
+async function Delete(res, req){
     const id = ParseInt(req.params.id);
 
     try{
@@ -52,4 +52,4 @@ async function DELETE(res, req){
     }
 }
 
-module.exports = {GET, SET, UPDATE, DELETE}
+module.exports = {List, Create, Update, Delete}

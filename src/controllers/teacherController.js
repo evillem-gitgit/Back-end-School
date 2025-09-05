@@ -2,12 +2,12 @@
 const { PrismaClient } = require("@prisma/client");
 const prismas = new PrismaClient();
 
-async function GET(req, res) {
+async function List(req, res) {
     const teacher = await prismas.Teacher.findMany();
-    res.json(Teacher);
+    res.json(teacher);
 }
 
-async function SET(req, res) {
+async function Create(req, res) {
     const { id, nome, email, idade} = req.body;
 
     try{
@@ -27,7 +27,7 @@ async function SET(req, res) {
     }
 }
 
-async function UPDATE(req, res) {
+async function Update(req, res) {
     const id = parseInt(req.params.id);
     const { nome, email} = req.body;
 
@@ -42,7 +42,7 @@ async function UPDATE(req, res) {
     }
 }
 
-async function DELETE(res, req){
+async function Delete(res, req){
     const id = ParseInt(req.params.id);
 
     try{
@@ -53,4 +53,4 @@ async function DELETE(res, req){
     }
 }
 
-module.exports = {GET, SET, UPDATE, DELETE}
+module.exports = {List, Create, Update, Delete}
