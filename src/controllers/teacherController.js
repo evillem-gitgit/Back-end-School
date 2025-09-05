@@ -32,7 +32,7 @@ async function Update(req, res) {
     const { nome, email} = req.body;
 
     try{
-        const updateTeacher = await prisma.Teacher.update({
+        const updateTeacher = await prismas.Teacher.update({
             where: { id },
             data: { ...(nome && {nome}), ...(email && { email }) }
         });
@@ -46,7 +46,7 @@ async function Delete(res, req){
     const id = ParseInt(req.params.id);
 
     try{
-        await prisma.Teacher.delete({ where: { id } });
+        await prismas.Teacher.delete({ where: { id } });
         res.json({ message: 'Aluno exluído com sucesso' });
     } catch (err) {
         res.status(404).json({ error: 'Aluno não encontrado'});

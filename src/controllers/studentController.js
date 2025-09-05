@@ -31,7 +31,7 @@ async function Update(req, res) {
     const { nome, email} = req.body;
 
     try{
-        const updateStudants = await prisma.Studant.update({
+        const updateStudants = await prismas.Studant.update({
             where: { id },
             data: { ...(nome && {nome}), ...(email && { email }) }
         });
@@ -45,7 +45,7 @@ async function Delete(res, req){
     const id = ParseInt(req.params.id);
 
     try{
-        await prisma.Studant.delete({ where: { id } });
+        await prismas.Studant.delete({ where: { id } });
         res.json({ message: 'Aluno exluído com sucesso' });
     } catch (err) {
         res.status(404).json({ error: 'Aluno não encontrado'});
