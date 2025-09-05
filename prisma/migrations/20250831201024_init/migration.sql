@@ -1,14 +1,14 @@
--- CreateTable
-CREATE TABLE "Aluno" (
+CREATE TABLE "Student" (
     "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
     "nome" TEXT NOT NULL,
-    "email" TEXT NOT NULL
+    "email" TEXT NOT NULL UNIQUE,
+    "idade" INTEGER 
 );
 
--- CreateTable
-CREATE TABLE "Professor" (
+
+CREATE TABLE "Teacher" (
     "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
     "nome" TEXT NOT NULL,
-    "materia" TEXT NOT NULL
+    "email" TEXT NOT NULL UNIQUE,
+    "idade" INTEGER
 );
-

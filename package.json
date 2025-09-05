@@ -2,17 +2,16 @@
   "name": "cadastro_alunos",
   "version": "1.0.0",
   "main": "index.js",
-
   "scripts": {
-  "dev": "nodemon src/server.js"
-},
-
-"keywords": [],
+    "dev": "nodemon src/server.js"
+  },
+  "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
   "dependencies": {
     "@prisma/client": "^6.15.0",
+    "dotenv": "^17.2.1",
     "express": "^5.1.0",
     "prisma": "^6.15.0"
   },
