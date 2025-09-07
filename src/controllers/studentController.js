@@ -1,8 +1,8 @@
 const { PrismaClient } = require("@prisma/client");
-const prismas = new PrismaClient();
+const prisma = new PrismaClient();
 
 async function List(req, res) {
-    const studantes = await prismas.Studant.findMany();
+    const studantes = await prisma.student.findMany();
     res.json(studantes);
 }
 
@@ -10,14 +10,14 @@ async function Create(req, res) {
     const { id, nome, email, idade} = req.body;
 
     try{
-        const newStudant = await prismas.Studant.create({
+        const newStudant = await prisma.student.create({
             data: {
                 nome,
                 email,
                 idade: parseInt(idade)
             }
         });
-        res.status(201).jason(newStudant);
+        res.status(201).json(newStudant);
     } catch (err) {
         if (err.code === 'P2002') {
             return res.status(409).json({error: 'Email ja cadastrado'});
@@ -31,7 +31,7 @@ async function Update(req, res) {
     const { nome, email} = req.body;
 
     try{
-        const updateStudants = await prismas.Studant.update({
+        const updateStudants = await prisma.student.update({
             where: { id },
             data: { ...(nome && {nome}), ...(email && { email }) }
         });
@@ -41,11 +41,11 @@ async function Update(req, res) {
     }
 }
 
-async function Delete(res, req){
-    const id = ParseInt(req.params.id);
+async function Delete(req, res){
+    const id = parseInt(req.params.id);
 
     try{
-        await prismas.Studant.delete({ where: { id } });
+        await prisma.student.delete({ where: { id } });
         res.json({ message: 'Aluno exluído com sucesso' });
     } catch (err) {
         res.status(404).json({ error: 'Aluno não encontrado'});
